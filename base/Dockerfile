@@ -12,28 +12,28 @@ MAINTAINER juning (691092674@qq.com)
 ENV DEBIAN_FRONTEND noninteractive
 
 # 清空ubuntu更新包
-RUN sudo rm -rf /var/lib/apt/lists/*
+RUN  rm -rf /var/lib/apt/lists/*
 
 # 一次性安装vim，wget，curl，ssh server等必备软件
 # RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe"> /etc/apt/sources.list
-RUN sudo apt-get update
-RUN sudo apt-get install -y vim wget curl openssh-server sudo
-RUN sudo mkdir -p /var/run/sshd
+RUN  apt-get update
+RUN  apt-get install -y vim wget curl openssh-server 
+RUN  mkdir -p /var/run/sshd
 
 # 将sshd的UsePAM参数设置成no
 RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
-# 添加测试用户admin，密码admin，并且将此用户添加到sudoers里
+# 添加测试用户admin，密码admin，并且将此用户添加到ers里
 RUN useradd admin
 RUN echo "admin:admin" | chpasswd
-RUN echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers
+RUN echo "admin   ALL=(ALL)       ALL" >> /etc/ers
 
 # 把admin用户的shell改成bash，否则SSH登录Ubuntu服务器，命令行不显示用户名和目录 
 RUN usermod -s /bin/bash admin
 
 # 安装supervisor工具
-RUN sudo apt-get install -y supervisor
-RUN sudo mkdir -p /var/log/supervisor
+RUN  apt-get install -y supervisor
+RUN  mkdir -p /var/log/supervisor
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
