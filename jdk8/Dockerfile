@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-#把java与tomcat添加到容器中
+#把java添加到容器中
 ADD jdk-8u131-linux-x64.tar.gz /usr/local/
 
 #配置java与tomcat环境变量
