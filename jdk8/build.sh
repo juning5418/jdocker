@@ -1,0 +1,1 @@
+docker build -t="jdocker/jdk8:v1" .
