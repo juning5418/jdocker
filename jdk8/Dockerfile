@@ -14,11 +14,14 @@ ENV DEBIAN_FRONTEND noninteractive
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# 设置 jdk 的环境变量，若读者有其他的环境变量需要设置，也可以在这里添加。
-ENV JAVA_HOME /software/jdk8
+#把java与tomcat添加到容器中
+ADD jdk-8u131-linux-x64.tar.gz /usr/local/
 
-# 复制 jdk1.8.0_65 文件到镜像中（jdk1.8.0_65 文件夹要和Dockerfile文件在同一路径）
-ADD jdk1.8.0_65 /software/jdk8
+#配置java与tomcat环境变量
+ENV JAVA_HOME /usr/local/jdk1.8.0_131
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin:
+
 
 # 执行supervisord来同时执行多个命令，使用 supervisord 的可执行路径启动服务。
-CMD ["/software/bin/supervisord"]
+CMD ["/usr/bin/supervisord"]
