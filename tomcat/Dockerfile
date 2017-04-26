@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 #把tomcat添加到容器中
-ADD apache-tomcat-8.0.20.tar.gz /usr/local/
+ADD apache-tomcat-8.5.14.tar.gz /usr/local/
 
 #配置java与tomcat环境变量
 ENV CATALINA_HOME /usr/local/apache-tomcat-8.5.14
