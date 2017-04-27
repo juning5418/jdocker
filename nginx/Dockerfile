@@ -15,18 +15,18 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # 安装升级gcc
-RUN sudo rm -rf /var/lib/apt/lists/*
-RUN sudo apt-get update
+RUN  rm -rf /var/lib/apt/lists/*
+RUN  apt-get update
 
-RUN sudo apt-get -y install \
+RUN  apt-get -y install \
 build-essential
 
-RUN sudo mkdir -p /software/temp
+RUN  mkdir -p /software/temp
 RUN wget http://nginx.org/download/nginx-1.8.0.tar.gz && tar -zxvf nginx-1.8.0.tar.gz -C /software/temp
 RUN wget http://zlib.net/zlib-1.2.8.tar.gz && tar -zxvf zlib-1.2.8.tar.gz -C /software/temp
 RUN wget http://www.openssl.org/source/openssl-1.0.1q.tar.gz && tar -zxvf openssl-1.0.1q.tar.gz -C /software/temp
 RUN wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz && tar -zxvf pcre-8.37.tar.gz -C /software/temp
-RUN cd /software/temp/nginx-1.8.0 && sudo ./configure --sbin-path=/software/nginx-1.8.0/nginx --conf-path=/software/nginx-1.8.0/nginx.conf --pid-path=/software/nginx-1.8.0/nginx.pid --with-http_ssl_module --with-pcre=/software/temp/pcre-8.37 --with-zlib=/software/temp/zlib-1.2.8 --with-http_flv_module --with-http_mp4_module --with-openssl=/software/temp/openssl-1.0.1q && sudo make && sudo make install
+RUN cd /software/temp/nginx-1.8.0 &&  ./configure --sbin-path=/software/nginx-1.8.0/nginx --conf-path=/software/nginx-1.8.0/nginx.conf --pid-path=/software/nginx-1.8.0/nginx.pid --with-http_ssl_module --with-pcre=/software/temp/pcre-8.37 --with-zlib=/software/temp/zlib-1.2.8 --with-http_flv_module --with-http_mp4_module --with-openssl=/software/temp/openssl-1.0.1q &&  make &&  make install
 
 # 设置nginx是非daemon启动
 RUN echo 'daemon off;' >> /software/nginx-1.8.0/nginx.conf
