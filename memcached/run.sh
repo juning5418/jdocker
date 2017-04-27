@@ -1,0 +1,1 @@
+docker run -name jdocker-memcached -p 9999:22 -p 11212:11211 -d -t -i "jdocker/memcached:v1"
