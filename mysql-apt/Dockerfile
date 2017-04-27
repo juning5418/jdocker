@@ -17,8 +17,8 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get -y install mysql-server
 RUN /etc/init.d/mysql start \
-    && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '1';" \
-    && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by '1';" 
+    && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by 'rootroot';" \
+    && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by 'rootroot';" 
 
 RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
     && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
