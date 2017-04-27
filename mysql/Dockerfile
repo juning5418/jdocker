@@ -24,7 +24,7 @@ RUN echo "export LC_ALL=C"
 RUN  apt-get update
 
 RUN  apt-get -y install \
-build-essential
+cmake build-essential
 
 #RUN  apt-get install cmake
 #RUN  apt-get install -y make libarchive13  cmake gcc g++ bison libncurses5-dev build-essential
