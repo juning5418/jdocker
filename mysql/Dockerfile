@@ -22,7 +22,7 @@ COPY sources.list /etc/apt/sources.list
 # 安装升级gcc
 #RUN  rm -rf /var/lib/apt/lists/*
 RUN  apt-get update
-
+RUN  apt-get install cmake
 #RUN  apt-get install -y make libarchive13  cmake gcc g++ bison libncurses5-dev build-essential
 
 # 复制 mysql-5.6.28 文件到镜像中（mysql-5.6.28文件夹要和Dockerfile文件在同一路径）
