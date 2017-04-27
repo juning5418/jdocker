@@ -29,6 +29,8 @@ libarchive13  cmake gcc g++ bison libncurses5-dev build-essential
 #RUN  apt-get install cmake
 #RUN  apt-get install -y make libarchive13  cmake gcc g++ bison libncurses5-dev build-essential
 
+#wget http://mirror.neu.edu.cn/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz
+
 # 复制 mysql-5.6.28 文件到镜像中（mysql-5.6.28文件夹要和Dockerfile文件在同一路径）
 ADD mysql-5.6.28.tar.gz /software/downloads/
 
