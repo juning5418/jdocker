@@ -15,11 +15,11 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # 安装升级gcc
-RUN  rm -rf /var/lib/apt/lists/*
-RUN  apt-get update
+#RUN  rm -rf /var/lib/apt/lists/*
+#RUN  apt-get update
 
-RUN  apt-get -y install \
-build-essential
+#RUN  apt-get -y install \
+#build-essential
 
 RUN  mkdir -p /software/temp
 RUN wget http://nginx.org/download/nginx-1.8.0.tar.gz && tar -zxvf nginx-1.8.0.tar.gz -C /software/temp
