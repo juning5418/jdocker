@@ -25,7 +25,7 @@ RUN  apt-get update
 RUN  apt-get install -y make cmake gcc g++ bison libncurses5-dev build-essential
 
 # 复制 mysql-5.6.28 文件到镜像中（mysql-5.6.28文件夹要和Dockerfile文件在同一路径）
-ADD mysql-5.6.28 /software/downloads/mysql-5.6.28
+ADD mysql-5.6.28.tar.gz /software/downloads/
 
 RUN cd /software/downloads/mysql-5.6.28 && cmake . -DCMAKE_INSTALL_PREFIX=/software/mysql-5.6.28 -DMYSQL_DATADIR=/software/mysql-5.6.28/data -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DWITH_PERFSCHEMA_STORAGE_ENGINE=1 -DWITHOUT_EXAMPLE_STORAGE_ENGINE=1 -DWITHOUT_FEDERATED_STORAGE_ENGINE=1 -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_EXTRA_CHARSETS=all -DENABLED_LOCAL_INFILE=1 -DWITH_READLINE=1 -DMYSQL_UNIX_ADDR=/software/mysql-5.6.28/mysql.sock -DMYSQL_TCP_PORT=3306 -DMYSQL_USER=mysql -DCOMPILATION_COMMENT="lq-edition" -DENABLE_DTRACE=0 -DOPTIMIZER_TRACE=1 -DWITH_DEBUG=1 && make && make install
 
