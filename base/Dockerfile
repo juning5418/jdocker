@@ -23,7 +23,7 @@ RUN  mkdir -p /var/run/sshd
 # 将sshd的UsePAM参数设置成no
 RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
-# 添加测试用户admin，密码admin，并且将此用户添加到ers里
+# 添加测试用户admin，密码admin，并且将此用户添加到ers里 ssh admin@ip -p 9999
 RUN useradd admin
 RUN echo "admin:admin" | chpasswd
 RUN echo "admin   ALL=(ALL)       ALL" >> /etc/ers
