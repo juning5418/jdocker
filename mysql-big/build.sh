@@ -1,0 +1,1 @@
+docker build -t="jdocker/mysql:v1" .
