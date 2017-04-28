@@ -8,14 +8,21 @@ FROM jdocker/tools:v1
 # 下面是一些创建者的基本信息
 MAINTAINER juning (691092674@qq.com)
 
+RUN groupadd -r mysql && useradd -r -g mysql mysql
+
 # 设置环境变量，所有操作都是非交互式的
 ENV DEBIAN_FRONTEND noninteractive
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+RUN apt-get -y install mysql-server \
+	&& rm -rf /var/lib/mysql && mkdir -p /var/lib/mysql /var/run/mysqld \
+	&& chown -R mysql:mysql /var/lib/mysql /var/run/mysqld \
+	&& chmod 777 /var/run/mysqld
 
-RUN apt-get -y install mysql-server
+
+#RUN apt-get -y install mysql-server
 RUN /etc/init.d/mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by 'rootroot';" \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by 'rootroot';" 
@@ -27,7 +34,7 @@ RUN /etc/init.d/mysql start \
 # VOLUME 选项是将本地的目录挂在到容器中　此处要注意：当你运行-v　＜hostdir>:<Containerdir> 时要确保目录内容相同否则会出现数据丢失
 # 对应关系如下
 # mysql:/docker/mysql/data
-#VOLUME  ["/etc/mysql", "/var/lib/mysql"]
+VOLUME /var/lib/mysql
 
 # 容器需要开放MySQL 3306端口
 EXPOSE 3306
