@@ -20,11 +20,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get -y install mysql-server
 
-RUN rm -rf /var/lib/mysql 
-RUN mkdir -p /var/lib/mysql /var/run/mysqld 
-RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
-
-RUN chmod 777 /var/run/mysqld
 
 RUN /etc/init.d/mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by 'rootroot';" \
@@ -33,6 +28,10 @@ RUN /etc/init.d/mysql start \
 RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
     && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
     && mv /tmp/my.cnf /etc/mysql/my.cnf
+
+RUN mkdir -p /var/lib/mysql /var/run/mysqld 
+RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
+RUN chmod 777 /var/run/mysqld
 
 # VOLUME 选项是将本地的目录挂在到容器中　此处要注意：当你运行-v　＜hostdir>:<Containerdir> 时要确保目录内容相同否则会出现数据丢失
 # 对应关系如下
