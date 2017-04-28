@@ -1,5 +1,5 @@
 ############################################
-# version : jdocker/mysql-apt:v1
+# version : jdocker/mysql-small:v1
 # desc : 当前版本安装的MySQL
 ############################################
 # 设置继承自我们创建的 tools 镜像
@@ -27,7 +27,7 @@ RUN /etc/init.d/mysql start \
 # VOLUME 选项是将本地的目录挂在到容器中　此处要注意：当你运行-v　＜hostdir>:<Containerdir> 时要确保目录内容相同否则会出现数据丢失
 # 对应关系如下
 # mysql:/docker/mysql/data
-#VOLUME ["/var/lib/mysql"]
+VOLUME  ["/etc/mysql", "/var/lib/mysql"]
 
 # 容器需要开放MySQL 3306端口
 EXPOSE 3306
