@@ -1,1 +1,0 @@
-docker build -t="jdocker/mysql-apt:v1" .
