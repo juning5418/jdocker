@@ -20,6 +20,9 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get -y install mysql-server
 
+RUN rm -rf /var/lib/mysql 
+RUN mkdir -p /var/lib/mysql /var/run/mysqld 
+RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
 
 RUN chmod 777 /var/run/mysqld
 
