@@ -23,7 +23,7 @@ RUN echo "export LC_ALL=C"
 #RUN  rm -rf /var/lib/apt/lists/*
 RUN  apt-get update
 
-#RUN  apt-get -y install \
+RUN  apt-get -y install cmake
 #libarchive13 cmake gcc g++ bison libncurses5-dev build-essential
 
 #RUN  apt-get install cmake
