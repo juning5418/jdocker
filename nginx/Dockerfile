@@ -32,6 +32,8 @@ RUN cd /software/temp/nginx-1.8.0 &&  ./configure --sbin-path=/software/nginx-1.
 RUN echo 'daemon off;' >> /software/nginx-1.8.0/nginx.conf
 RUN echo 'master_process off;' >> /software/nginx-1.8.0/nginx.conf
 RUN echo 'error_log  logs/error.log;' >> /software/nginx-1.8.0/nginx.conf
+RUN mkdir -p /software/nginx-1.8.0/servers
+
 
 # 设置 NGINX 的环境变量，若读者有其他的环境变量需要设置，也可以在这里添加。
 ENV NGINX_HOME /software/nginx-1.8.0
