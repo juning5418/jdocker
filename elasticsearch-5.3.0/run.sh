@@ -7,4 +7,4 @@
 #sudo docker run -d -p 9201:9200  --name=elasticsearch-test9201 -v "/home/cadmin/data/elasticsearch/config":/usr/share/elasticsearch/config -v "/home/cadmin/data/elasticsearch/data":/usr/share/elasticsearch/data elasticsearch:latest
 
 
-docker run -p 9999:22 -p 9200:9200 -p 9300:9300 -t -i 'jdocker/elasticsearch:v1'
+docker run --name elasticsearch-5.3.0 -d -p 9999:22 -p 9200:9200 -p 9300:9300 -t -i 'jdocker/elasticsearch:v1'
