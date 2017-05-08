@@ -11,7 +11,8 @@ MAINTAINER juning (691092674@qq.com)
 # 设置环境变量，所有操作都是非交互式的
 ENV DEBIAN_FRONTEND noninteractive
 
-#RUN groupadd -r mysql && useradd -r -g mysql mysql
+RUN groupadd -r mysql && useradd -r -g mysql mysql
+
 
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
@@ -19,7 +20,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get update
 RUN apt-get -y install mysql-server
-
+RUN usermod -d /var/lib/mysql/ mysql
 
 RUN /etc/init.d/mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '123456';" \
