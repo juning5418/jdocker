@@ -17,13 +17,13 @@ ENV DEBIAN_FRONTEND noninteractive
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-
+RUN apt-get update
 RUN apt-get -y install mysql-server
 
 
 RUN /etc/init.d/mysql start \
-    && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by 'rootroot';" \
-    && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by 'rootroot';" 
+    && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '123456';" \
+    && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by '123456';" 
 
 RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
     && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
