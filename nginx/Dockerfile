@@ -38,6 +38,9 @@ RUN mkdir -p /software/nginx-1.8.0/servers
 # 设置 NGINX 的环境变量，若读者有其他的环境变量需要设置，也可以在这里添加。
 ENV NGINX_HOME /software/nginx-1.8.0
 
+
+VOLUME  /software/nginx-1.8.0
+
 # 容器需要开放Nginx 80端口
 EXPOSE 80
 
