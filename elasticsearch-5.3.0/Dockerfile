@@ -2,8 +2,8 @@
 # version : jdocker/elasticsearch:v1
 # desc : 当前版本安装的elasticsearch
 ############################################
-# 设置继承自我们创建的 jdk7 镜像
-FROM FROM jdocker/tools:v1
+# 设置继承自我们创建的  镜像
+FROM jdocker/tools:v1
 
 # 下面是一些创建者的基本信息
 MAINTAINER juning (691092674@qq.com)
