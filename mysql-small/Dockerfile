@@ -23,7 +23,7 @@ RUN apt-get -y install mysql-server
 RUN usermod -d /var/lib/mysql/ mysql
 
 #RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
-RUN cp mysqld.cnf /etc/mysql/my.cnf
+COPY mysqld.cnf /etc/mysql/my.cnf
 
 
 RUN /etc/init.d/mysql start \
