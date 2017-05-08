@@ -22,9 +22,11 @@ ENV ES_HOME /software/elasticsearch-5.3.0
 # 复制 elasticsearch-5.3.0 文件到镜像中（elasticsearch-5.3.0文件夹要和Dockerfile文件在同一路径）
 ADD elasticsearch-5.3.0.tar.gz /software
 
-RUN chmod 777 -R /software
 
 COPY elasticsearch /software/elasticsearch-5.3.0/bin/elasticsearch
+
+RUN chmod 777 -R /software
+
 #RUN echo 'ES_JAVA_OPTS="-Des.insecure.allow.root=true"' >> /software/elasticsearch-5.3.0/bin/elasticsearch
 
 
