@@ -22,6 +22,9 @@ RUN apt-get update
 RUN apt-get -y install mysql-server
 RUN usermod -d /var/lib/mysql/ mysql
 
+RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
+
+
 RUN /etc/init.d/mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '123456';" \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by '123456';" 
