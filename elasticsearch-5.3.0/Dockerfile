@@ -24,6 +24,9 @@ ADD elasticsearch-5.3.0.tar.gz /software
 
 RUN chmod 777 -R /software
 
+RUN echo 'ES_JAVA_OPTS="-Des.insecure.allow.root=true"' >> /software/elasticsearch-5.3.0/bin/elasticsearch
+
+
 # 容器需要开放ES的9200和9300端口
 EXPOSE 9200
 EXPOSE 9300
