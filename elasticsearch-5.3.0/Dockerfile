@@ -28,7 +28,8 @@ ADD elasticsearch-5.3.0.tar.gz /software
 COPY elasticsearch /software/elasticsearch-5.3.0/bin/elasticsearch
 
 RUN chown -R admin:admin  /software
-#RUN chmod 777 -R /software
+RUN chmod 777 -R /software
+
 
 #RUN echo 'ES_JAVA_OPTS="-Des.insecure.allow.root=true"' >> /software/elasticsearch-5.3.0/bin/elasticsearch
 
