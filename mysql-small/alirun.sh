@@ -1,0 +1,1 @@
+docker run --name mysql  -p 3307:3306 -d  -v /root/docker/mysql/data/:/var/lib/mysql jdocker/mysql-small:v1
