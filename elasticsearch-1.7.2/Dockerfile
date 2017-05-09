@@ -22,6 +22,10 @@ ENV ES_HOME /software/elasticsearch-1.7.2
 # 复制 elasticsearch-1.7.2 文件到镜像中（elasticsearch-1.7.2文件夹要和Dockerfile文件在同一路径）
 ADD elasticsearch-1.7.2 /software/elasticsearch-1.7.2
 
+
+VOLUME  /software/elasticsearch-1.7.2/data
+VOLUME  /software/elasticsearch-1.7.2/config
+
 # 容器需要开放ES的9200和9300端口
 EXPOSE 9200
 EXPOSE 9300
