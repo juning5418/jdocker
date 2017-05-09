@@ -12,9 +12,9 @@
 # Optionally, exact memory values can be set using the `ES_JAVA_OPTS`.
 # Note that the Xms and Xmx lines in the JVM options file must be
 # commented out. Sample format include "512m", and "10g".
-ES_JAVA_OPTS="-Des.insecure.allow.root=true"
+#ES_JAVA_OPTS="-Des.insecure.allow.root=true"
 #
-#   ES_JAVA_OPTS="-Xms8g -Xmx8g" ./bin/elasticsearch
+   ES_JAVA_OPTS="-Xms8g -Xmx8g" ./bin/elasticsearch -Des.insecure.allow.root=true
 #
 # As a convenience, a fragment of shell is sourced in order to set one or
 # more of these variables. This so-called `include' can be placed in a

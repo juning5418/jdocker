@@ -11,7 +11,6 @@ MAINTAINER juning (691092674@qq.com)
 # 设置环境变量，所有操作都是非交互式的
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN groupadd -r elasticsearch && useradd -r -g elasticsearch elasticsearch
 
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
@@ -28,7 +27,8 @@ ADD elasticsearch-5.3.0.tar.gz /software
 
 COPY elasticsearch /software/elasticsearch-5.3.0/bin/elasticsearch
 
-RUN chmod 777 -R /software
+RUN chown -R admin:admin  /software
+#RUN chmod 777 -R /software
 
 #RUN echo 'ES_JAVA_OPTS="-Des.insecure.allow.root=true"' >> /software/elasticsearch-5.3.0/bin/elasticsearch
 
