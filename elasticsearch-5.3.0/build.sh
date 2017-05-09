@@ -1,1 +1,0 @@
-docker build -t="jdocker/elasticsearch:v1" .
