@@ -1,1 +1,1 @@
-docker run -p 9999:22 -p 9200:9200 -p 9300:9300 -t -i -d 'jdocker/elasticsearch:v1.7.2'
+docker run --name elasticsearch1.7.2 -p 9999:22 -p 9200:9200 -p 9300:9300 -t -i -d 'jdocker/elasticsearch:v1.7.2'
