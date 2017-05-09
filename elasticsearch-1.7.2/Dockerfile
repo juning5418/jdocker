@@ -1,12 +1,12 @@
 ############################################
-# version : birdben/elasticsearch:v1
+# version : jdocker/elasticsearch:v1
 # desc : 当前版本安装的elasticsearch
 ############################################
 # 设置继承自我们创建的 jdk7 镜像
-FROM birdben/jdk7:v1
+FROM jdocker/jdk8:v1
 
 # 下面是一些创建者的基本信息
-MAINTAINER birdben (191654006@163.com)
+MAINTAINER juning (691092674@qq.com)
 
 # 设置环境变量，所有操作都是非交互式的
 ENV DEBIAN_FRONTEND noninteractive
