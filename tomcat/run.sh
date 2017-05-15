@@ -1,1 +1,1 @@
-docker run -p 9999:22 -p 8081:8080 -d -t -i  jdocker/tomcat8:v1
+docker run --name tomcatkanfang -v /home/cadmin/war/kanfang:/usr/local/apache-tomcat-8.5.14/webapps/kanfang -p 9999:22 -p 8081:8080 -d -t -i  jdocker/tomcat8:v1
