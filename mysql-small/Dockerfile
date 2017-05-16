@@ -28,7 +28,7 @@ COPY mysqld.cnf /etc/mysql/my.cnf
 RUN  chown mysql:mysql /etc/mysql/my.cnf
 
 
-RUN /etc/init.d/mysql --user=mysql start \
+RUN /etc/init.d/mysql  start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '1qaz2wsx3edc';" \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by '1qaz2wsx3edc';" 
 
