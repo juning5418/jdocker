@@ -11,7 +11,7 @@ MAINTAINER juning (691092674@qq.com)
 # 设置环境变量，所有操作都是非交互式的
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN groupadd -r mysql && useradd -r -g mysql mysql
+#RUN groupadd -r mysql && useradd -r -g mysql mysql
 
 
 
@@ -23,7 +23,7 @@ RUN apt-get update
 
 
 RUN apt-get -y install mysql-server
-RUN usermod -d /var/lib/mysql/ mysql
+#RUN usermod -d /var/lib/mysql/ mysql
 
 #RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
 COPY mysqld.cnf /etc/mysql/my.cnf
@@ -37,8 +37,8 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
     && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
     && mv /tmp/my.cnf /etc/mysql/my.cnf
 
-RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
-RUN chmod 777 /var/run/mysqld
+#RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
+#RUN chmod 777 /var/run/mysqld
 #RUN mkdir -p /var/lib/mysql /var/run/mysqld 
 
 # VOLUME 选项是将本地的目录挂在到容器中　此处要注意：当你运行-v　＜hostdir>:<Containerdir> 时要确保目录内容相同否则会出现数据丢失
