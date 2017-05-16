@@ -21,9 +21,7 @@ RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN apt-get update
-
-
+#RUN apt-get update
 
 RUN apt-get -y install mysql-server
 #RUN usermod -d /var/lib/mysql/ mysql
@@ -33,13 +31,15 @@ COPY mysqld.cnf /etc/mysql/my.cnf
 RUN  chown mysql:mysql /etc/mysql/my.cnf
 
 
+RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
+    && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
+    && mv /tmp/my.cnf /etc/mysql/my.cnf
+
 RUN /etc/init.d/mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '1qaz2wsx3edc';" \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by '1qaz2wsx3edc';" 
 
-RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
-    && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
-    && mv /tmp/my.cnf /etc/mysql/my.cnf
+
 
 #RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
 #RUN chmod 777 /var/run/mysqld
