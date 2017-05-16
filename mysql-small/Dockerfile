@@ -13,6 +13,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #RUN groupadd -r mysql && useradd -r -g mysql mysql
 
+RUN useradd mysql
+RUN echo "mysql:mysql" | chpasswd
+RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
 
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
@@ -27,6 +30,7 @@ RUN apt-get -y install mysql-server
 
 #RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
 COPY mysqld.cnf /etc/mysql/my.cnf
+RUN sudo chown mysql:mysql /etc/mysql/my.cnf
 
 
 RUN /etc/init.d/mysql start \
