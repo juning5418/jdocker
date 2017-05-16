@@ -22,6 +22,8 @@ ENV CATALINA_HOME /usr/local/apache-tomcat-8.5.14
 ENV CATALINA_BASE /usr/local/apache-tomcat-8.5.14
 ENV PATH $PATH:$CATALINA_HOME/lib:$CATALINA_HOME/bin
 
+RUN echo "Asia/shanghai" > /etc/timezone;
+
 # 容器需要开放Tomcat 8080端口
 EXPOSE 8080
 
