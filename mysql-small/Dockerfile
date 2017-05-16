@@ -13,6 +13,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 
+
+
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
@@ -26,7 +28,7 @@ COPY mysqld.cnf /etc/mysql/my.cnf
 RUN  chown mysql:mysql /etc/mysql/my.cnf
 
 
-RUN /etc/init.d/mysql start \
+RUN /etc/init.d/mysql --user=mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '1qaz2wsx3edc';" \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by '1qaz2wsx3edc';" 
 
@@ -37,8 +39,9 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 
 
 
-RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
-RUN chmod 777 /var/run/mysqld
+#RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
+#RUN chmod 777 /var/run/mysqld
+#RUN chmod a+rw /var/run/docker.sock
 #RUN mkdir -p /var/lib/mysql /var/run/mysqld 
 
 # VOLUME 选项是将本地的目录挂在到容器中　此处要注意：当你运行-v　＜hostdir>:<Containerdir> 时要确保目录内容相同否则会出现数据丢失
