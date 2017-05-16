@@ -20,7 +20,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get update
 
-RUN mkdir -p /var/lib/mysql /var/run/mysqld 
 
 
 RUN apt-get -y install mysql-server
@@ -40,6 +39,7 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 
 RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
 RUN chmod 777 /var/run/mysqld
+#RUN mkdir -p /var/lib/mysql /var/run/mysqld 
 
 # VOLUME 选项是将本地的目录挂在到容器中　此处要注意：当你运行-v　＜hostdir>:<Containerdir> 时要确保目录内容相同否则会出现数据丢失
 # 对应关系如下
