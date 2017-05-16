@@ -1,1 +1,1 @@
-docker run --name tomcat-kanfang-8081 -v /etc/localtime:/etc/localtime:ro -v /home/cadmin/war/kanfang:/usr/local/apache-tomcat-8.5.14/webapps/  -p 8081:8080 -d -t -i  jdocker/tomcat8:v1
+docker run --name tomcat-kanfang-8081  -v  /home/cadmin/file:/file -v /etc/localtime:/etc/localtime:ro -v /home/cadmin/war/kanfang:/usr/local/apache-tomcat-8.5.14/webapps/  -p 8081:8080 -d -t -i  jdocker/tomcat8:v1
