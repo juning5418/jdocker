@@ -25,11 +25,11 @@ RUN apt-get -y install mysql-server
 #RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
 
 
-#RUN useradd mysql
-#RUN echo "mysql:mysql" | chpasswd
-#RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
+RUN useradd mysql
+RUN echo "mysql:mysql" | chpasswd
+RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
 
-user mysql
+#user mysql
 
 COPY mysqld.cnf /etc/mysql/my.cnf
 RUN  chown mysql:mysql /etc/mysql/my.cnf
@@ -46,7 +46,7 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 
 
 
-#RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
+RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
 #RUN chmod 777 /var/run/mysqld
 #RUN chmod a+rw /var/run/docker.sock
 #RUN mkdir -p /var/lib/mysql /var/run/mysqld 
