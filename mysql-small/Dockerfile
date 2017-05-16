@@ -25,9 +25,9 @@ RUN apt-get -y install mysql-server
 #RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
 
 
-RUN useradd mysql
-RUN echo "mysql:mysql" | chpasswd
-RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
+#RUN useradd mysql
+#RUN echo "mysql:mysql" | chpasswd
+#RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
 
 #user mysql
 
