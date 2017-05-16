@@ -30,7 +30,7 @@ RUN apt-get -y install mysql-server
 
 #RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
 COPY mysqld.cnf /etc/mysql/my.cnf
-RUN sudo chown mysql:mysql /etc/mysql/my.cnf
+RUN  chown mysql:mysql /etc/mysql/my.cnf
 
 
 RUN /etc/init.d/mysql start \
