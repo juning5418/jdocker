@@ -11,12 +11,7 @@ MAINTAINER juning (691092674@qq.com)
 # 设置环境变量，所有操作都是非交互式的
 ENV DEBIAN_FRONTEND noninteractive
 
-#RUN groupadd -r mysql && useradd -r -g mysql mysql
-
-RUN useradd mysql
-RUN echo "mysql:mysql" | chpasswd
-RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
-
+RUN groupadd -r mysql && useradd -r -g mysql mysql
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -36,7 +31,7 @@ RUN /etc/init.d/mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by '1qaz2wsx3edc';" \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by '1qaz2wsx3edc';" 
 
-    
+
 RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
     && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
     && mv /tmp/my.cnf /etc/mysql/my.cnf

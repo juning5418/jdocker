@@ -14,4 +14,3 @@ docker run --name mysql   -v /etc/localtime:/etc/localtime:ro   -v /root/data/my
 #docker run -p 3306:3306 --name mysql -v /etc/localtime:/etc/localtime:ro -v $PWD/conf/my.cnf:/etc/mysql/my.cnf -v $PWD/logs:/logs -v $PWD/data:/mysql_data -e MYSQL_ROOT_PASSWORD=1qaz2wsx3edc -d mysql:5.6
 
 
-docker run -v /root/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=1qaz2wsx3edc jdocker/mysql-small:v1
