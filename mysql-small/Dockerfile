@@ -47,6 +47,7 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 
 
 RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
+RUN usermod -d /var/lib/mysql/ mysql
 #RUN chmod 777 /var/run/mysqld
 #RUN chmod a+rw /var/run/docker.sock
 #RUN mkdir -p /var/lib/mysql /var/run/mysqld 
