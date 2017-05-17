@@ -1,4 +1,6 @@
 
+
+#挂载一直错误，可以先下载一个官方mysql 的docker 启动挂载。然后就好用了。我在想为啥不用官方的就得了 囧
 #docker pull mysql
 #docker run -d --name myMysql -v /root/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql
 
