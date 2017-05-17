@@ -21,17 +21,9 @@ RUN apt-get update
 
 RUN apt-get -y install mysql-server
 
-#RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
 
-
-#RUN useradd mysql
-#RUN echo "mysql:mysql" | chpasswd
-RUN echo "mysql   ALL=(ALL)       ALL" >> /etc/sudoers
-
-#RUN user mysql
 
 COPY mysqld.cnf /etc/mysql/my.cnf
-#RUN  chown mysql:mysql /etc/mysql/my.cnf
 
 
 RUN /etc/init.d/mysql  start \
@@ -42,11 +34,6 @@ RUN /etc/init.d/mysql  start \
 RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
     && echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
     && mv /tmp/my.cnf /etc/mysql/my.cnf
-
-
-
-#RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
-RUN usermod -d /var/lib/mysql mysql
 
 
 # VOLUME 选项是将本地的目录挂在到容器中　此处要注意：当你运行-v　＜hostdir>:<Containerdir> 时要确保目录内容相同否则会出现数据丢失
