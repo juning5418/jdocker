@@ -1,8 +1,8 @@
 
-curl -XPUT http://192.168.1.101:9200/index;
+curl -XPUT http://localhost:9200/index;
 
 
-curl -XPOST http://192.168.1.101:9200/index/fulltext/_mapping -d'
+curl -XPOST http://localhost:9200/index/fulltext/_mapping -d'
 {
     "fulltext": {
              "_all": {

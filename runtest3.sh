@@ -1,4 +1,4 @@
-curl -XPOST http://192.168.1.101:9200/index/fulltext/_search  -d'
+curl -XPOST http://localhost:9200/index/fulltext/_search  -d'
 {
     "query" : { "term" : { "content" : "中国" }},
     "highlight" : {
