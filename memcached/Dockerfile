@@ -21,6 +21,11 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # 容器需要开放 11211端口
 EXPOSE 11211
 
+# Set the user to run Memcached daemon
+USER daemon
+ 
+# Set the entrypoint to memcached binary
+ENTRYPOINT memcached
 
 # 执行supervisord来同时执行多个命令，使用 supervisord 的可执行路径启动服务。
 CMD ["/usr/bin/supervisord"]
