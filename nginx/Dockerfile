@@ -29,17 +29,22 @@ RUN wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.g
 RUN cd /software/temp/nginx-1.8.0 &&  ./configure --sbin-path=/software/nginx-1.8.0/nginx --conf-path=/software/nginx-1.8.0/nginx.conf --pid-path=/software/nginx-1.8.0/nginx.pid --with-http_ssl_module --with-pcre=/software/temp/pcre-8.37 --with-zlib=/software/temp/zlib-1.2.11 --with-http_flv_module --with-http_mp4_module --with-openssl=/software/temp/openssl-1.0.1q &&  make &&  make install
 
 # 设置nginx是非daemon启动
-RUN echo 'daemon off;' >> /software/nginx-1.8.0/nginx.conf
-RUN echo 'master_process off;' >> /software/nginx-1.8.0/nginx.conf
-RUN echo 'error_log  logs/error.log;' >> /software/nginx-1.8.0/nginx.conf
+#RUN echo 'daemon off;' >> /software/nginx-1.8.0/nginx.conf
+#RUN echo 'master_process off;' >> /software/nginx-1.8.0/nginx.conf
+#RUN echo 'error_log  logs/error.log;' >> /software/nginx-1.8.0/nginx.conf
+RUN mkdir -p /software/nginx-1.8.0/sqlfilter
 RUN mkdir -p /software/nginx-1.8.0/servers
+COPY sql.conf /software/nginx-1.8.0/sqlfilter/sql.conf
+COPY nginx.conf /software/nginx-1.8.0/nginx.conf
+
+
 
 
 # 设置 NGINX 的环境变量，若读者有其他的环境变量需要设置，也可以在这里添加。
-ENV NGINX_HOME /software/nginx-1.8.0
+ENV NGINX_HOME /software/nginx-1.8.0/
 
 
-VOLUME  /software/nginx-1.8.0
+VOLUME  /software/nginx-1.8.0/servers/
 
 # 容器需要开放Nginx 80端口
 EXPOSE 80
