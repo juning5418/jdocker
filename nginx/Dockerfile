@@ -34,6 +34,7 @@ RUN cd /software/temp/nginx-1.8.0 &&  ./configure --sbin-path=/software/nginx-1.
 #RUN echo 'error_log  logs/error.log;' >> /software/nginx-1.8.0/nginx.conf
 RUN mkdir -p /software/nginx-1.8.0/sqlfilter
 RUN mkdir -p /software/nginx-1.8.0/servers
+RUN mkdir -p /software/war
 COPY sql.conf /software/nginx-1.8.0/sqlfilter/sql.conf
 COPY nginx.conf /software/nginx-1.8.0/nginx.conf
 
@@ -45,6 +46,7 @@ ENV NGINX_HOME /software/nginx-1.8.0/
 
 
 VOLUME  /software/nginx-1.8.0/servers/
+VOLUME  /software/war/
 
 # 容器需要开放Nginx 80端口
 EXPOSE 80
