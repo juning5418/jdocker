@@ -20,6 +20,9 @@ ADD kibana-5.4.0-linux-x86_64 /software/kibana-5.4.0-linux-x86_64
 
 ENV KIBANA_HOME /software/kibana-5.4.0-linux-x86_64
 
+RUN cd /software/kibana-5.4.0-linux-x86_64
+RUN bin/kibana-plugin install x-pack
+
 
 VOLUME  /software/kibana-5.4.0-linux-x86_64/config
 
