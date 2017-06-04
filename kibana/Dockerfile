@@ -19,9 +19,7 @@ ADD kibana-5.4.1-linux-x86_64 /software/kibana-5.4.1-linux-x86_64
 
 ENV KIBANA_HOME /software/kibana-5.4.1-linux-x86_64
 
-#RUN /software/kibana-5.4.0-linux-x86_64/bin/kibana-plugin install x-pack
-
-VOLUME  /software/kibana-5.4.0-linux-x86_64/config
+VOLUME  /software/kibana-5.4.1-linux-x86_64/config
 
 EXPOSE 5601
 
