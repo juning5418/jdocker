@@ -27,7 +27,7 @@ RUN apt-get -y install npm
 
 RUN wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
 
-// 解压：
+
 RUN tar -zxf node-v6.10.3.tar.gz \
  && cd node-v6.10.3 \
  && ./configure \
