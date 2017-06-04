@@ -32,13 +32,13 @@ RUN npm install -g grunt
 
 
 #RUN tar -zxf node-v6.10.3.tar.gz \
- && cd node-v6.10.3 \
- && ./configure \
- && make \
- && make install 
- && ./configure –prefix=/usr/local/node 
- && make
- && sudo make install
+# && cd node-v6.10.3 \
+# && ./configure \
+# && make \
+# && make install 
+# && ./configure –prefix=/usr/local/node 
+# && make
+# && sudo make install
 
 
 
