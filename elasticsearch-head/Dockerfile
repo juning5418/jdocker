@@ -12,6 +12,9 @@ MAINTAINER juning (691092674@qq.com)
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
+RUN apt-get install -y python-software-properties software-properties-common  
+RUN add-apt-repository ppa:chris-lea/node.js
+RUN apt-get update
 
 RUN apt-get -y install git
 RUN apt-get -y install nodejs
@@ -20,7 +23,7 @@ RUN apt-get -y install npm
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-#RUN node -v
+RUN node -v
 RUN npm -v
 #RUN node install.js
 
