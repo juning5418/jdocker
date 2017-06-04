@@ -1,0 +1,1 @@
+docker run -d --restart=always -p 9100:9100 --name=elasticsearch-head -v /etc/localtime:/etc/localtime:ro jdocker/searchhead:v1
