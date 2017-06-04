@@ -21,8 +21,8 @@ RUN apt-get update
 #RUN apt-get -y install g++
 
 RUN apt-get -y install git
-RUN apt-get -y install -g nodejs 
-RUN apt-get -y install -g grunt 
+RUN apt-get -y install nodejs 
+RUN apt-get -y install grunt 
 RUN apt-get -y install npm
 
 
