@@ -14,15 +14,12 @@ ENV DEBIAN_FRONTEND noninteractive
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-
 # 复制 elasticsearch-1.7.2 文件到镜像中（elasticsearch-1.7.2文件夹要和Dockerfile文件在同一路径）
 ADD kibana-5.4.0-linux-x86_64 /software/kibana-5.4.0-linux-x86_64
 
 ENV KIBANA_HOME /software/kibana-5.4.0-linux-x86_64
 
-RUN cd /software/kibana-5.4.0-linux-x86_64
-RUN bin/kibana-plugin install x-pack
-
+#RUN /software/kibana-5.4.0-linux-x86_64/bin/kibana-plugin install x-pack
 
 VOLUME  /software/kibana-5.4.0-linux-x86_64/config
 
