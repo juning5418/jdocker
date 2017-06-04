@@ -21,15 +21,11 @@ RUN apt-get -y install  npm
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
-RUN mkdir /software 
-
-RUN cd /software 
-
+ 
 RUN git clone git://github.com/mobz/elasticsearch-head.git
 
-RUN cd elasticsearch-head
-
-RUN npm install
+RUN cd elasticsearch-head \
+    && npm install
 
 EXPOSE 9100
 
