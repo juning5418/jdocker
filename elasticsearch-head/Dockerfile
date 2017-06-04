@@ -14,6 +14,9 @@ ENV DEBIAN_FRONTEND noninteractive
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+
+RUN mkdir /software 
+
 RUN cd /software 
 
 RUN git clone git://github.com/mobz/elasticsearch-head.git
