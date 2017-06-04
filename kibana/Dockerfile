@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # 复制 elasticsearch-1.7.2 文件到镜像中（elasticsearch-1.7.2文件夹要和Dockerfile文件在同一路径）
-ADD kibana-5.4.0-linux-x86_64 /software/kibana-5.4.0-linux-x86_64
+ADD kibana-5.4.1-linux-x86_64 /software/kibana-5.4.1-linux-x86_64
 
 ENV KIBANA_HOME /software/kibana-5.4.0-linux-x86_64
 
