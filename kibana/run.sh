@@ -1,1 +1,1 @@
-docker run -d --restart=always -p 5601:5601 --name=kibana-client -v /etc/localtime:/etc/localtime:ro -v /root/data/kibana/conf:/software/kibana-5.4.1-linux-x86_64/config jdocker/kibana:v1
+docker run -d --restart=always -p 5601:5601 --name=kibana-client -v /etc/localtime:/etc/localtime:ro -v /root/data/kibana/config:/software/kibana-5.4.1-linux-x86_64/config jdocker/kibana:v1
