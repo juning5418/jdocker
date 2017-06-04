@@ -12,13 +12,32 @@ MAINTAINER juning (691092674@qq.com)
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y python-software-properties software-properties-common  
-RUN add-apt-repository ppa:chris-lea/node.js
-RUN apt-get update
 
+
+RUN apt-get -y install g++ curl libssl-dev apache2-utils
+RUN apt-get -y install python 
+RUN apt-get -y install build-essential 
+RUN apt-get -y install gcc 
+RUN apt-get -y install g++
 RUN apt-get -y install git
-RUN apt-get -y install nodejs
+#RUN apt-get -y install nodejs
 RUN apt-get -y install npm
+
+
+
+RUN wget https://nodejs.org/dist/v6.10.3/node-v6.10.3.tar.gz
+
+// 解压：
+RUN tar -zxf node-v6.10.3.tar.gz \
+ && cd node-v6.10.3 \
+ && ./configure \
+ && make \
+ && make install 
+ && ./configure –prefix=/usr/local/node 
+ && make
+ && sudo make install
+
+
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
