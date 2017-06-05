@@ -1,4 +1,4 @@
-curl -XPOST -u elastic -p changeme http://localhost:9200/index/fulltext/_search  -d'
+curl -XPOST -u elastic -p changeme http://121.41.12.245:9200/index/fulltext/_search  -d'
 {
     "query" : { "term" : { "content" : "中国" }},
     "highlight" : {
