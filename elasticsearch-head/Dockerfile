@@ -3,7 +3,7 @@
 # desc : 当前版本安装的kibana   
 ############################################
 # 设置继承自我们创建的 jdk7 镜像
-FROM node/latest
+FROM node:latest
 
 # 下面是一些创建者的基本信息
 MAINTAINER juning (691092674@qq.com)
