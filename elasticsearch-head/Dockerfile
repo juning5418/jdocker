@@ -24,6 +24,9 @@ RUN npm install -g grunt
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ENV ELASTICSEARCH_HOME /elasticsearch-head
+COPY start.sh /elasticsearch-head/start.sh
+
 
 
 
