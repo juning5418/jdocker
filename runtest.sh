@@ -1,8 +1,8 @@
 
-curl -XPUT http://localhost:9200/index;
+curl -XPUT -u elastic -p changeme http://localhost:9200/index;
 
 
-curl -XPOST http://localhost:9200/index/fulltext/_mapping -d'
+curl -XPOST -u elastic -p changeme http://localhost:9200/index/fulltext/_mapping -d'
 {
     "fulltext": {
              "_all": {
