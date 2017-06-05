@@ -12,11 +12,7 @@ MAINTAINER juning (691092674@qq.com)
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-
-
-
 RUN apt-get -y install git
-
 RUN apt-get -y install npm
 RUN npm install -g grunt 
 
@@ -35,7 +31,7 @@ RUN git clone git://github.com/mobz/elasticsearch-head.git \
 
 
 ENV ELASTICSEARCH_HOME /elasticsearch-head
-COPY start.sh /elasticsearch-head/start.sh
+COPY start.sh /elasticsearch-head/run.sh
 
 EXPOSE 9100
 
