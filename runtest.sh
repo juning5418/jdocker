@@ -1,8 +1,8 @@
 
-curl -XPUT -u elastic -p changeme http://121.41.12.245:9200/index;
+curl -XPUT --user elastic:adminvalue http://121.41.12.245:9200/index;
 
 
-curl -XPOST -u elastic -p changeme http://121.41.12.245:9200/index/fulltext/_mapping -d'
+curl -XPOST --user elastic:adminvalue http://121.41.12.245:9200/index/fulltext/_mapping -d'
 {
     "fulltext": {
              "_all": {
