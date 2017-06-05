@@ -1,0 +1,1 @@
+docker build -t="jdocker/tomcat8:v1-1" .
