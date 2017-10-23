@@ -1,0 +1,1 @@
+docker run -p 9090:8888 -p 22122:22122 -p 23000:23000  -d -t -i "jdocker/fastdfs:v1"

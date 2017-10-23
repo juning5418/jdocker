@@ -1,10 +1,19 @@
-FROM ubuntu:16.04  
+ FROM jdocker/tools:v1
   
 RUN apt-get update  
   
 RUN apt-get install -y make gcc net-tools build-essential libtool libpcre3 libpcre3-dev zlib1g-dev openssl  
   
-MAINTAINER kingdz  
+# 下面是一些创建者的基本信息
+MAINTAINER juning (691092674@qq.com)
+
+# 设置环境变量，所有操作都是非交互式的
+ENV DEBIAN_FRONTEND noninteractive
+
+# 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+
   
 ADD soft /usr/local/src/  
   
