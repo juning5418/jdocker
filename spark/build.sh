@@ -1,0 +1,1 @@
+docker build -t="jdocker/spark:v1" .
