@@ -17,7 +17,7 @@ RUN  rm -rf /var/lib/apt/lists/*
 # 一次性安装vim，wget，curl，ssh server等必备软件
 # RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe"> /etc/apt/sources.list
 RUN  apt-get update
-RUN  apt-get install -y vim wget curl openssh-server 
+RUN  apt-get install -y vim wget curl openssh-server unzip 
 RUN  mkdir -p /var/run/sshd
 
 # 将sshd的UsePAM参数设置成no

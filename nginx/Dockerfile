@@ -23,7 +23,8 @@ build-essential
 
 RUN  mkdir -p /software/temp
 COPY nginx-http-concat-master.zip /software/temp/nginx-http-concat-master.zip
-RUN unzip /software/temp/nginx-http-concat-master.zip
+
+RUN unzip /software/temp/nginx-http-concat-master.zip -d  /software/temp
 RUN wget http://nginx.org/download/nginx-1.8.0.tar.gz && tar -zxvf nginx-1.8.0.tar.gz -C /software/temp
 RUN wget http://zlib.net/zlib-1.2.11.tar.gz && tar -zxvf zlib-1.2.11.tar.gz -C /software/temp
 RUN wget http://www.openssl.org/source/openssl-1.0.1q.tar.gz && tar -zxvf openssl-1.0.1q.tar.gz -C /software/temp
