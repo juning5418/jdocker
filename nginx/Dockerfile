@@ -22,12 +22,13 @@ RUN  apt-get -y install \
 build-essential
 
 RUN  mkdir -p /software/temp
-
+COPY nginx-http-concat-master.zip /software/temp/nginx-http-concat-master.zip
+RUN unzip /software/temp/nginx-http-concat-master.zip
 RUN wget http://nginx.org/download/nginx-1.8.0.tar.gz && tar -zxvf nginx-1.8.0.tar.gz -C /software/temp
 RUN wget http://zlib.net/zlib-1.2.11.tar.gz && tar -zxvf zlib-1.2.11.tar.gz -C /software/temp
 RUN wget http://www.openssl.org/source/openssl-1.0.1q.tar.gz && tar -zxvf openssl-1.0.1q.tar.gz -C /software/temp
 RUN wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz && tar -zxvf pcre-8.37.tar.gz -C /software/temp
-RUN cd /software/temp/nginx-1.8.0 &&  ./configure --sbin-path=/software/nginx-1.8.0/nginx --conf-path=/software/nginx-1.8.0/nginx.conf --pid-path=/software/nginx-1.8.0/nginx.pid --with-http_ssl_module --with-pcre=/software/temp/pcre-8.37 --with-zlib=/software/temp/zlib-1.2.11 --with-http_flv_module --with-http_mp4_module --with-openssl=/software/temp/openssl-1.0.1q &&  make &&  make install
+RUN cd /software/temp/nginx-1.8.0 &&  ./configure --sbin-path=/software/nginx-1.8.0/nginx --conf-path=/software/nginx-1.8.0/nginx.conf --pid-path=/software/nginx-1.8.0/nginx.pid --with-http_ssl_module --with-pcre=/software/temp/pcre-8.37 --with-zlib=/software/temp/zlib-1.2.11 --with-http_flv_module --with-http_mp4_module --with-openssl=/software/temp/openssl-1.0.1q --with-http_stub_status_module --add-module=/software/temp/nginx-http-concat-master &&  make &&  make install
 
 # 设置nginx是非daemon启动
 #RUN echo 'daemon off;' >> /software/nginx-1.8.0/nginx.conf
