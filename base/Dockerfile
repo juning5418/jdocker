@@ -3,7 +3,7 @@
 # desc : 当前版本安装的ssh，wget，curl，supervisor 
 ############################################
 # 设置继承自ubuntu官方镜像
-FROM ubuntu:16.04
+FROM ubuntu:latest
 
 # 下面是一些创建者的基本信息
 MAINTAINER juning (691092674@qq.com)
@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN  rm -rf /var/lib/apt/lists/*
 
 # 一次性安装vim，wget，curl，ssh server等必备软件
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe"> /etc/apt/sources.list
+#RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe"> /etc/apt/sources.list
 RUN  apt-get update
 RUN  apt-get install -y vim wget curl openssh-server unzip 
 RUN  mkdir -p /var/run/sshd
