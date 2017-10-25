@@ -1,5 +1,5 @@
 ############################################
-# version : jdocker/tools:v1
+# version : jdocker/tools:v1-1
 # desc : 当前版本安装的ssh，wget，curl，supervisor 
 ############################################
 # 设置继承自ubuntu官方镜像
