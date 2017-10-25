@@ -1,1 +1,1 @@
-docker build -t="jdocker/tools:v1" .
+docker build -t="jdocker/tools:v1-1" .
