@@ -39,6 +39,7 @@ RUN mkdir -p /software/nginx-1.8.0/sqlfilter
 RUN mkdir -p /software/nginx-1.8.0/servers
 RUN mkdir -p /software/war
 RUN mkdir -p /software/file
+RUN mkdir -p /software/logs
 COPY sql.conf /software/nginx-1.8.0/sqlfilter/sql.conf
 COPY nginx.conf /software/nginx-1.8.0/nginx.conf
 
@@ -52,6 +53,7 @@ ENV NGINX_HOME /software/nginx-1.8.0/
 VOLUME  /software/nginx-1.8.0/servers/
 VOLUME  /software/war/
 VOLUME  /software/file/
+VOLUME  /software/logs/
 
 # 容器需要开放Nginx 80端口
 EXPOSE 80
