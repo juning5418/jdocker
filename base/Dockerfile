@@ -1,5 +1,5 @@
 ############################################
-# version : jdocker/tools:v1-1
+# version : jdocker/tools:v1
 # desc : 当前版本安装的ssh，wget，curl，supervisor 
 ############################################
 # 设置继承自ubuntu官方镜像
@@ -37,6 +37,7 @@ RUN  mkdir -p /var/log/supervisor
 
 # 添加 supervisord 的配置文件，并复制配置文件到对应目录下面。（supervisord.conf文件和Dockerfile文件在同一路径）
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 
 # 容器需要开放SSH 22端口
 EXPOSE 22
