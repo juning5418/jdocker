@@ -56,7 +56,7 @@ VOLUME  /software/file/
 VOLUME  /software/logs/
 
 # 容器需要开放Nginx 80端口
-EXPOSE 80 8887
+EXPOSE 80
 
 # 执行run.sh文件
 # CMD ["/run.sh"]
