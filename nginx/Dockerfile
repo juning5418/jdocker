@@ -3,7 +3,8 @@
 # desc : 当前版本安装的nginx
 ############################################
 # 设置继承自我们创建的 tools  镜像
-FROM jdocker/tools:v1-1
+#FROM jdocker/tools:v1-1
+FROm juning5418/tools:latest
 
 # 下面是一些创建者的基本信息
 MAINTAINER juning (691092674@qq.com)
